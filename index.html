@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>UniCarbKB RDF / SPARQL by alternativeTime</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>UniCarbKB RDF / SPARQL</h1>
+        <p></p>
+
+        <p class="view"><a href="https://github.com/alternativeTime/unicarbrdfremote">View the Project on GitHub <small>alternativeTime/unicarbrdfremote</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/alternativeTime/unicarbrdfremote/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/alternativeTime/unicarbrdfremote/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/alternativeTime/unicarbrdfremote">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h3>
+<a id="welcome-to-the-unicarbkb-rdf-model" class="anchor" href="#welcome-to-the-unicarbkb-rdf-model" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Welcome to the UniCarbKB RDF Model</h3>
+
+<p>This page should be read in conjunction with the <a href="https://github.com/ReneRanzinger/GlycoRDF">GlycoRDF</a> project site and <a href="http://code.glytoucan.org/rdf-ontology/rdf-doc.html">GlyTouCan</a>. This is a working document that provides information on the RDF model with a focus on glycoprotein specific data stored in UniCarbKB.</p>
+
+<h3>
+<a id="example-rdf-triples" class="anchor" href="#example-rdf-triples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example RDF Triples</h3>
+
+<h4>
+<a id="glycan-sequence" class="anchor" href="#glycan-sequence" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Glycan Sequence</h4>
+
+<pre><code>&lt;http://rdf.unicarbkb.org/glycan/123&gt;
+    a   glycan:saccharide ;
+    glycan:has_glycosequence
+    &lt;http://rdf.unicarbkb.org/glycan/123/glycoct&gt; 
+    &lt;http://rdf.unicarbkb.org/glycan/123/uoxf&gt; .
+</code></pre>
+
+<h4>
+<a id="glycoct-structure-representation" class="anchor" href="#glycoct-structure-representation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>GlycoCT Structure Representation</h4>
+
+<pre><code>&lt;http://rdf.glycoinfo.org/glycan/123/glycoct&gt;
+    a   glycan:glycosequence ;
+    glycan:in_carbohydrate_format    
+    glycan:carbohydrate_format_glycoct ;
+    glycan:has_sequence 
+        “RES…”^^xsd:string .
+</code></pre>
+
+<pre><code>
+#### Oxford Notation
+&lt;http://rdf.unicarbkb.org/glycan/123/uoxf&gt;
+    a glycan:glycosequence ;
+    glycan:in_carbohydrate_format    
+    glycan:carbohydrate_format_uoxf ;
+    glycan:has_uoxf
+        "A2G(4)1"^^xsd:string .
+</code></pre>
+
+<h4>
+<a id="protein-summary" class="anchor" href="#protein-summary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Protein Summary</h4>
+
+<pre><code>@PREFIX glycan: &lt;http://purl.jp/bio/12/glyco/glycan#&gt; .
+@PREFIX uniprot: &lt;http://purl.uniprot.org/core/&gt; .
+
+&lt;http://rdf.unicarbkb.org/proteinsummary/P00740&gt;
+    glycan:has_attached_glycan
+        &lt;http://rdf.unicarbkb.org/structure/705&gt;…
+    glycan:has_glycosylated_AA
+        &lt;http://rdf.unicarbkb.org/glycoAASite/195_SER107&gt; , 
+        &lt;http://rdf.unicarbkb.org/glycoAASite/195_SER99&gt; ;
+    glycan:has_uniprot_accession
+        "uniprot:P00740" . 
+</code></pre>
+
+<h4>
+<a id="glycoprotein-site" class="anchor" href="#glycoprotein-site" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Glycoprotein Site</h4>
+
+<pre><code>&lt;http://rdf.unicarbkb.org/glycoAASite/195_SER99&gt;
+    a glycan:glycosylated_AA ;
+    &lt;http://biohackathon.org/resource/faldoLocation&gt;
+        &lt;http://rdf.unicarbkb.org/position/P00740_SER99&gt; ;
+    glycan:amino_acid &lt;serine&gt; ;
+    glycan:has_attached_glycan
+        &lt;http://rdf.unicarbkb.org/structure/705&gt;…
+    glycan:modification_type
+        "O-glycosylation"^^xsd:string .
+</code></pre>
+
+<h3>
+<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>For help and updates on availability of UniCarbKB contact Matthew Campbell</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/alternativeTime">alternativeTime</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
